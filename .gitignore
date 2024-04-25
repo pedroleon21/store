@@ -1,0 +1,73 @@
+# .NET Core and Visual Studio temporary files
+.vscode/
+.vs/
+bin/
+obj/
+
+# .NET Core SDK
+.project/
+*.user
+
+# Build results
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+[Rr]eleases/
+x64/
+x86/
+[Aa][Rr][Mm]/
+[Aa][Rr][Mm]64/
+bld/
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+[Ll]ogs/
+
+# Visual Studio files
+*.vscode/
+.vscode/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.suo
+*.cache
+*.csproj.user
+*.bin/
+*.lock.json
+*.dotCover
+*.ncrunch*
+*.dotsettings
+
+# Rider
+.idea/
+*.sln.iml
+*.ide*
+
+# User-specific files
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# NuGet packages
+*.nuget.props
+*.paket.restore.*
+packages/
+project.lock.json
+npm-debug.log*
+
+# Package files
+*.nupkg
+*.pupkg
+*.dll
+*.exe
+
+# OS generated files
+.DS_Store
+thumbs.db
+ehthumbs.db
+
+# Roslyn cache directories
+*.ide/
+*.sln.docstates

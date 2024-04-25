@@ -8,9 +8,11 @@ builder.Services.AddControllers();
 builder.Services.AddTransient<ICreateUserHandler, CreateUserHandler>();
 builder.Services.AddTransient<IGetUserHandler, GetUserHandler>();
 builder.Services.AddTransient<ICreateLojaHandler, CreateLojaHandler>();
-builder.Services.AddTransient<IGetLoiaHandler, GetLoiaHandler>();
+builder.Services.AddTransient<IGetLojaHandler, GetLojaHandler>();
 builder.Services.AddTransient<ICreateProdutoHandler, CreateProdutoHandler>();
 builder.Services.AddTransient<IGetProdutoHandler, GetProdutoHandler>();
+builder.Services.AddTransient<IDeleteProdutoHandler, DeleteProdutoHandler>();
+builder.Services.AddTransient<IListProdutosHandler, ListProdutosHandler>();
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddDbContext<DataContext>(options =>

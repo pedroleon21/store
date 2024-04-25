@@ -8,7 +8,7 @@ namespace Store.Controllers
     [ApiController]
     [Route("/loja")]
     public class LojaController : ControllerBase
-    {
+    { 
         [HttpPost]
         [Route("")]
         [ProducesResponseType(200, Type = typeof(LojaResponse))]
@@ -24,7 +24,7 @@ namespace Store.Controllers
         [ProducesResponseType(200, Type = typeof(LojaResponse))]
         public ActionResult read(
             [FromRoute] int idLoja,
-            [FromServices] IGetLoiaHandler handler)
+            [FromServices] IGetLojaHandler handler)
         {
             return Ok(handler.Handler(idLoja));
         }

@@ -7,7 +7,7 @@ namespace Store.Commands
         public int? Id { get; set; }
         public string? Nome { get; set; }
         public string? Descricao { get; set; }
-        public float preco { get; set; } = .0f;
+        public decimal preco { get; set; }
         public int LojaId { get; set; }
         public DateTime DtCriacao { get; set; }
         public ProdutoResponse(Produto produto)
@@ -17,6 +17,7 @@ namespace Store.Commands
             this.Nome = produto.Nome;
             this.LojaId = produto.LojaId;
             this.DtCriacao = produto.DtCriacao;
+            this.preco = produto.Preco;
         }
     }
 }

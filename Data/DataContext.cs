@@ -32,7 +32,11 @@ namespace Store.Data
                 .WithOne(p=>p.Loja);
 
 
-            modelBuilder.Entity<Produto>().ToTable("produto");
+            modelBuilder.Entity<Produto>().ToTable("produto")
+                .Property(p=>p.Preco)
+                .HasPrecision(18,2)
+                .HasColumnType("decimal")
+                .HasColumnName("Preco");
         }
     }
 }

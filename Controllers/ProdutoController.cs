@@ -8,6 +8,24 @@ namespace Store.Controllers
     [Route("/produto")]
     public class ProdutoController : ControllerBase
     {
+        [HttpGet]
+        [Route("")]
+        public IActionResult index(
+            [FromQuery] int? lojaId,
+            [FromServices] IListProdutosHandler handler) 
+        {
+            return Ok(handler.Handler(lojaId));
+        }
+        [HttpDelete]
+        [Route("{idProduto}")]
+        [ProducesResponseType(200, Type = typeof(void))]
+        public IActionResult delete(
+          [FromRoute] int idProduto,
+          [FromServices] IDeleteProdutoHandler handler)
+        {
+            handler.Handler(idProduto);
+            return Ok();
+        }
         [HttpPost]
         [Route("")]
         [ProducesResponseType(200, Type = typeof(ProdutoResponse))]

@@ -8,8 +8,8 @@ namespace Store.Models
         [Key]
         public int? Id { get; set; } 
         public string? Nome { get; set; }
+        public decimal Preco { get; set; }
         public string? Descricao { get; set; }
-        public decimal? Preco { get; set; } = 0m;
         public DateTime DtCriacao { get; set;} = DateTime.Now;
         [ForeignKey("Id")]
         public int LojaId { get; set; }

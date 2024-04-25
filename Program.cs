@@ -3,6 +3,17 @@ using Store.Data;
 using Store.Handlers;
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: "AllowSpecificOrigin",
+                      builder =>
+                      {
+                          builder.WithOrigins("http://localhost:4200")
+                                 .AllowAnyHeader()
+                                 .AllowAnyMethod();
+                      });
+});
+
 builder.Services.AddControllers();
 
 builder.Services.AddTransient<ICreateUserHandler, CreateUserHandler>();
@@ -13,6 +24,8 @@ builder.Services.AddTransient<ICreateProdutoHandler, CreateProdutoHandler>();
 builder.Services.AddTransient<IGetProdutoHandler, GetProdutoHandler>();
 builder.Services.AddTransient<IDeleteProdutoHandler, DeleteProdutoHandler>();
 builder.Services.AddTransient<IListProdutosHandler, ListProdutosHandler>();
+builder.Services.AddTransient<IAuthHancler, AuthHancler>();
+builder.Services.AddTransient<IEmailSender, EmailSender>();
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddDbContext<DataContext>(options =>
@@ -42,6 +55,7 @@ app.MapGet("/", () =>
     return Results.Ok(healthCheckResponse);
 });
 
+app.UseCors("AllowSpecificOrigin");
 
 app.MapControllers();
 

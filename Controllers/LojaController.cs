@@ -8,7 +8,16 @@ namespace Store.Controllers
     [ApiController]
     [Route("/loja")]
     public class LojaController : ControllerBase
-    { 
+    {
+        [HttpGet]
+        [Route("")]
+        [ProducesResponseType(200, Type = typeof(List<LojaResponse>))]
+        public IActionResult list(
+            [FromQuery] int? userId,
+            [FromServices] IListLojaHandler handler)
+        {
+            return Ok(handler.Handler(userId));
+        }
         [HttpPost]
         [Route("")]
         [ProducesResponseType(200, Type = typeof(LojaResponse))]

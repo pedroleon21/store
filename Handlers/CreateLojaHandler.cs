@@ -26,6 +26,7 @@ namespace Store.Handlers
             };
             dataContext.Lojas.Add(loja);
             dataContext.SaveChanges();
+            loja.Usuario = user;
             return new LojaResponse(loja);
         }
     }

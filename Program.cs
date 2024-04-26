@@ -24,8 +24,9 @@ builder.Services.AddTransient<ICreateProdutoHandler, CreateProdutoHandler>();
 builder.Services.AddTransient<IGetProdutoHandler, GetProdutoHandler>();
 builder.Services.AddTransient<IDeleteProdutoHandler, DeleteProdutoHandler>();
 builder.Services.AddTransient<IListProdutosHandler, ListProdutosHandler>();
-builder.Services.AddTransient<IAuthHancler, AuthHancler>();
+builder.Services.AddTransient<IAuthHandler, AuthHandler>();
 builder.Services.AddTransient<IEmailSender, EmailSender>();
+builder.Services.AddTransient<IListLojaHandler, ListLojaHandler>();
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddDbContext<DataContext>(options =>

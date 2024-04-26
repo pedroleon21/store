@@ -7,15 +7,19 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Handlers\NovaPasta1\**" />
     <Compile Remove="NovaPasta2\**" />
     <Compile Remove="NovaPasta3\**" />
     <Compile Remove="NovaPasta4\**" />
+    <Content Remove="Handlers\NovaPasta1\**" />
     <Content Remove="NovaPasta2\**" />
     <Content Remove="NovaPasta3\**" />
     <Content Remove="NovaPasta4\**" />
+    <EmbeddedResource Remove="Handlers\NovaPasta1\**" />
     <EmbeddedResource Remove="NovaPasta2\**" />
     <EmbeddedResource Remove="NovaPasta3\**" />
     <EmbeddedResource Remove="NovaPasta4\**" />
+    <None Remove="Handlers\NovaPasta1\**" />
     <None Remove="NovaPasta2\**" />
     <None Remove="NovaPasta3\**" />
     <None Remove="NovaPasta4\**" />
@@ -26,5 +30,8 @@
 	    <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 	  </PackageReference>
 	  <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.4" />
+	  <PackageReference Include="Moq" Version="4.20.70" />
+	  <PackageReference Include="NUnit3TestAdapter" Version="4.5.0" />
+	  <PackageReference Include="xunit" Version="2.7.1" />
 	</ItemGroup>
 </Project>

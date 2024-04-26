@@ -8,16 +8,6 @@ namespace Store.Controllers
     [Route("user")]
     public class UserController : ControllerBase
     {
-
-        [HttpPost]
-        [Route("auth")]
-        public IActionResult login(
-            [FromBody] AuthAction reques,
-            [FromServices] IAuthHancler handler)
-        {
-            handler.handler(reques);
-            return Ok();
-        }
         [HttpPost]
         [Route("")]
         [ProducesResponseType(200,Type = typeof(UserResponse))]

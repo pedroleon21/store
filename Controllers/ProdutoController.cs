@@ -48,5 +48,14 @@ namespace Store.Controllers
         {
             return Ok(handler.Handler(idProduto));
         }
+        [HttpPut]
+        [Route("")]
+        [ProducesResponseType(200, Type = typeof(ProdutoResponse))]
+        public IActionResult update(
+            [FromBody] UpdateProdutoAction request,
+            [FromServices] IUpdateProdutoHandler handler)
+        {
+            return Ok(handler.Handler(request));
+        }
     }
 }

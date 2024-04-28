@@ -32,6 +32,7 @@ builder.Services.AddTransient<IEmailSender, EmailSender>();
 builder.Services.AddTransient<IListLojaHandler, ListLojaHandler>();
 builder.Services.AddTransient<IDeleteLojaHandler, DeleteLojaHandler>();
 builder.Services.AddTransient<ICatalogEventHandler, CatalogEventHandler>();
+builder.Services.AddTransient<IUpdateProdutoHandler, UpdateProdutoHandler>();
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddDbContext<DataContext>(options =>

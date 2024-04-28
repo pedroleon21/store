@@ -37,6 +37,8 @@ namespace Store.Data
                 .HasPrecision(18,2)
                 .HasColumnType("decimal")
                 .HasColumnName("Preco");
+            modelBuilder.Entity<Produto>()
+                .HasOne<Loja>(p=>p.Loja);
         }
     }
 }

@@ -11,13 +11,16 @@ namespace Store.Controllers
     {
         [HttpGet]
         [Route("")]
-        [ProducesResponseType(200, Type = typeof(List<LojaResponse>))]
+        [ProducesResponseType(200, Type = typeof(PageResult<LojaResponse>))]
         public IActionResult list(
             [FromQuery] int? userId,
+            [FromQuery] int? PageIndex,
+            [FromQuery] int? PageSize,
             [FromServices] IListLojaHandler handler)
         {
-            return Ok(handler.Handler(userId));
+            return Ok(handler.Handler(userId,PageIndex, PageSize));
         }
+
         [HttpPost]
         [Route("")]
         [ProducesResponseType(200, Type = typeof(LojaResponse))]
@@ -36,6 +39,16 @@ namespace Store.Controllers
             [FromServices] IGetLojaHandler handler)
         {
             return Ok(handler.Handler(idLoja));
+        }
+        [HttpDelete]
+        [Route("{idLoja}")]
+        [ProducesResponseType(200, Type = typeof(void))]
+        public IActionResult delete(
+            [FromRoute] int idLoja,
+            [FromServices] IDeleteLojaHandler handler )
+        {
+            handler.Handler(idLoja);
+            return Ok();
         }
     }
 }

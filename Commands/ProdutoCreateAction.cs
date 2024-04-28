@@ -6,5 +6,6 @@
         public string? Descricao { get; set; }
         public decimal Preco { get; set; }
         public int LojaId { get; set; }
+        public string? FotoBase64 { get; set; }
     }
 }

@@ -8,9 +8,11 @@ namespace Store.Handlers
     public class CreateProdutoHandler : ICreateProdutoHandler
     {
         private DataContext dataContext;
-        public CreateProdutoHandler(DataContext dataContext) 
+        private ICatalogEventHandler catalogHandler;
+        public CreateProdutoHandler(DataContext dataContext, ICatalogEventHandler catalogHandler) 
         {
             this.dataContext=dataContext;
+            this.catalogHandler = catalogHandler;
         }
         public ProdutoResponse Handler(ProdutoCreateAction action)
         {
@@ -24,10 +26,13 @@ namespace Store.Handlers
                 LojaId = action.LojaId,
                 Preco = action.Preco,
                 Descricao = action.Descricao,
+                FotoBase64 = action.FotoBase64,
                 Nome = action.Nome
             };
             dataContext.Produtos.Add(produto);
+            var emails = dataContext.Users.Select(u=> u.Email);
             dataContext.SaveChanges();
+            catalogHandler.Handler(produto,emails);
             return new ProdutoResponse(produto);
         }
     }

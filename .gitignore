@@ -71,3 +71,4 @@ ehthumbs.db
 # Roslyn cache directories
 *.ide/
 *.sln.docstates
+enviroment/data/

@@ -10,11 +10,14 @@ namespace Store.Controllers
     {
         [HttpGet]
         [Route("")]
+        [ProducesResponseType(200, Type = typeof(PageResult<ProdutoResponse>))]
         public IActionResult index(
             [FromQuery] int? lojaId,
+            [FromQuery] int? PageIndex,
+            [FromQuery] int? PageSize,
             [FromServices] IListProdutosHandler handler) 
         {
-            return Ok(handler.Handler(lojaId));
+            return Ok(handler.Handler(lojaId,PageIndex,PageSize));
         }
         [HttpDelete]
         [Route("{idProduto}")]

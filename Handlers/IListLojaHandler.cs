@@ -4,6 +4,6 @@ namespace Store.Handlers
 {
     public interface IListLojaHandler
     {
-        public List<LojaResponse> Handler(int? userId);
+        public PageResult<LojaResponse> Handler(int? userId, int? PageIndex, int? PageSize);
     }
 }

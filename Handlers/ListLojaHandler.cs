@@ -11,12 +11,22 @@ namespace Store.Handlers
         {
             this.dataContext = dataContext;
         }
-        public List<LojaResponse> Handler(int? userId)
+        public PageResult<LojaResponse> Handler(int? userId, int? PageIndex, int? PageSize)
         {
-            return dataContext.Lojas
-                .Where(l=>userId != null ? l.UsuarioId == userId : true)
+            return new PageResult<LojaResponse>
+            {
+                PageIndex = (PageIndex ?? 0),
+                PageSize = (PageSize ??10),
+                Count = dataContext.Lojas
+                .Where(l => userId != null ? l.UsuarioId == userId : true)
                 .Select(l => new LojaResponse(l))
-                .ToList();
+                .Count(),
+                Items = dataContext.Lojas
+                .Where(l => userId != null ? l.UsuarioId == userId : true)
+                .Select(l => new LojaResponse(l))
+                .Skip((PageIndex ?? 0) * (PageSize ?? 10))
+                .Take(PageSize ?? 10)
+            };
         }
     }
 }

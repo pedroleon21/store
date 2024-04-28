@@ -10,11 +10,22 @@ namespace Store.Controllers
     {
         [HttpPost]
         [Route("")]
+        [ProducesResponseType(200, Type = typeof(int))]
+        [ProducesResponseType(400, Type = typeof(void))]
         public IActionResult login(
             [FromBody] AuthAction reques,
             [FromServices] IAuthHandler handler)
         {
-            return Ok(handler.handler(reques));
+            try{ 
+                return Ok(handler.handler(reques));
+            }
+            catch(Exception ex)
+            {
+                return BadRequest(new ErrorResponse
+                {
+                    mensagem= ex.Message,
+                });
+            }
         }
     }
 }

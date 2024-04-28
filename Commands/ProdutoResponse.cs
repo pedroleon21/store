@@ -10,6 +10,8 @@ namespace Store.Commands
         public decimal preco { get; set; }
         public int LojaId { get; set; }
         public DateTime DtCriacao { get; set; }
+        public string? FotoBase64 { get; set; }
+
         public ProdutoResponse(Produto produto)
         {
             this.Id = produto.Id;
@@ -18,6 +20,7 @@ namespace Store.Commands
             this.LojaId = produto.LojaId;
             this.DtCriacao = produto.DtCriacao;
             this.preco = produto.Preco;
+            this.FotoBase64 = produto.FotoBase64;
         }
     }
 }

@@ -10,9 +10,9 @@ namespace Store.Data
 
         }
 
-        public DbSet<Usuario> Users { get; set; }
-        public DbSet<Produto> Produtos { get; set; }
-        public DbSet<Loja> Lojas { get; set; }
+        public virtual DbSet<Usuario> Users { get; set; }
+        public virtual DbSet<Produto> Produtos { get; set; }
+        public virtual DbSet<Loja> Lojas { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);

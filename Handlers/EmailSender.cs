@@ -4,12 +4,7 @@ using System.Net.Mail;
 namespace Store.Handlers
 {
     public class EmailSender : IEmailSender
-    {
-        private IConfiguration _config;
-        public EmailSender(IConfiguration config)
-        {
-            _config = _config;
-        }
+    { 
         public async Task SendEmailAsync(string email, string subject, string htmlMessage)
         {
 

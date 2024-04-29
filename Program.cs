@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
+using RabbitMQ.Client;
 using Store.Data;
 using Store.Handlers;
 var builder = WebApplication.CreateBuilder(args);
@@ -33,6 +34,13 @@ builder.Services.AddTransient<IListLojaHandler, ListLojaHandler>();
 builder.Services.AddTransient<IDeleteLojaHandler, DeleteLojaHandler>();
 builder.Services.AddTransient<ICatalogEventHandler, CatalogEventHandler>();
 builder.Services.AddTransient<IUpdateProdutoHandler, UpdateProdutoHandler>();
+builder.Services.AddSingleton<RabbitMQCatalogHandler>();
+builder.Services.AddSingleton<IEventSender, EventSender>();
+builder.Services.AddSingleton<RabbitMQ.Client.ConnectionFactory>((sp) =>
+{
+    // deveria esta num arquivo de configura��o.
+    return new ConnectionFactory() { HostName = "localhost", Port = 5672, UserName = "guest", Password = "guest" };
+});
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddDbContext<DataContext>(options =>

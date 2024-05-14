@@ -1,6 +1,15 @@
 version: '3.8'
 
 services:
+  my-rabbit:
+    image: rabbitmq:3-management
+    hostname: my-rabbit
+    ports:
+      - "15672:15672"
+      - "5672:5672"
+      - "25676:25676"
+    container_name: rabbit13
+    restart: unless-stopped
   sql-server:
     image: mcr.microsoft.com/mssql/server:2019-latest
     container_name: sql-server

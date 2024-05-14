@@ -72,3 +72,4 @@ ehthumbs.db
 *.ide/
 *.sln.docstates
 enviroment/data/
+enviroment\data
